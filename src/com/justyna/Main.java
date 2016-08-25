@@ -17,7 +17,7 @@ class Question {
         this.probabilityThatAnswerIsCorrect = lucky.nextDouble();
     }
 
-    public Integer getResultAnswer() {
+    public Integer checkLuck() {
         System.out.println(question);
         try{
             BufferedReader bufferRead = new BufferedReader(new InputStreamReader(System.in));
@@ -42,7 +42,7 @@ public class Main {
     public static void main(String[] args) {
         List<Question> questions = Arrays.asList(new Question("Podaj imie"), new Question("Podaj kolor"), new Question("Podaj kraj"), new Question("Podaj owoc"), new Question("Podaj zwierze"), new Question("Podaj kwiat"));
         System.out.println("Sprawdż czy masz szczęście");
-        String feedback = (questions.stream().map(Question::getResultAnswer).reduce(0, (a, b) -> a + b) >= 4 )? "Masz szczęście" : "Nie masz szczęścia";
+        String feedback = (questions.stream().map(Question::checkLuck).reduce(0, (a, b) -> a + b) >= 4 )? "Masz szczęście" : "Nie masz szczęścia";
         System.out.println(feedback);
     }
 }
